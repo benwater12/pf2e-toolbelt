@@ -1,0 +1,890 @@
+{
+    "pf2e-toolbelt": {
+        "SHARED": {
+            "migration": {
+                "warning": {
+                    "title": "模組遷移",
+                    "start": "開始遷移",
+                    "cancel": "取消",
+                    "content": {
+                        "modules": "下列模組可能需要遷移資料：",
+                        "wait": "如果系統正在遷移自身的資料，請在開始前稍等"
+                    }
+                },
+                "summary": {
+                    "title": "遷移摘要",
+                    "content": "下列文件已遷移",
+                    "nothing": "沒有文件需要遷移。"
+                },
+                "error": {
+                    "actors": "在遷移世界角色資料時發生錯誤。",
+                    "token": "在遷移指示物角色 {uuid} 的資料時發生錯誤。",
+                    "users": "在遷移使用者資料時發生錯誤。"
+                }
+            },
+            "spellcasting": {
+                "staff": "法杖",
+                "charges": "充能"
+            },
+            "gmOnly": "僅限 GM",
+            "reloadRequired": "需要重新載入",
+            "sending": "正在傳送"
+        },
+        "keybindings": {
+            "droppeth": {
+                "droppeth": {
+                    "name": "放下修飾鍵",
+                    "hint": "放下物品到地面時按住的鍵。"
+                }
+            },
+            "conditionManager": {
+                "manage": {
+                    "name": "管理狀態",
+                    "hint": "繫結鍵：長按並點選狀態調出效果編輯介面，以調整其持續時間。"
+                }
+            },
+            "teleport": {
+                "teleport": {
+                    "name": "傳送指示物",
+                    "hint": "點擊場景時按住此鍵，可傳送所有選取的指示物。"
+                },
+                "unselect": {
+                    "name": "傳送指示物（取消選取）",
+                    "hint": "點擊場景時按住此鍵，可傳送所有選取的指示物；按下快捷鍵時也會取消選取指示物，讓你能不受遮擋地查看整個場景。"
+                }
+            }
+        },
+        "settings": {
+            "requiresReload": "（需要重新載入）",
+            "global": {
+                "title": "全域",
+                "withContent": {
+                    "name": "包含容器內容",
+                    "hint": "當容器從一個角色移動到另一個角色時，其內容是否應隨之移動。"
+                }
+            },
+            "actionable": {
+                "title": "動作項",
+                "enabled": {
+                    "name": "已啟用",
+                    "hint": "新增了一種將巨集連結到動作和法術的方法。將巨集拖放到動作／法術頁面的詳細資訊標籤中。"
+                }
+            },
+            "arp": {
+                "title": "自動符文升級",
+                "enabled": {
+                    "name": "啟用",
+                    "hint": "你的世界是否使用自動符文升級變體？此功能與一般的 ABP 變體不相容，並會停用系統的變體設定。"
+                },
+                "force": {
+                    "name": "強制更新",
+                    "hint": "啟用後，符文將根據角色等級始終更新。停用後，僅會升級目前低於該等級應有值的符文。"
+                }
+            },
+            "effectsPanel": {
+                "title": "效果面板",
+                "remove": {
+                    "name": "移除效果快捷鍵",
+                    "hint": "在效果面板的效果圖示上按 [Shift + 右鍵]，會立即移除其所有充能、計數器或徽記。"
+                }
+            },
+            "giveth": {
+                "title": "傳遞管理",
+                "enabled": {
+                    "name": "已啟用",
+                    "hint": "如果你的世界允許你的玩家角色能夠將物品給予其他玩家所擁有的角色。"
+                },
+                "message": {
+                    "name": "發送訊息到聊天",
+                    "hint": "當一個物品被給予另一個角色時，將生成一則聊天訊息。"
+                },
+                "effect": {
+                    "name": "包含效果/狀態",
+                    "hint": "玩家是否也能將效果與狀態施加到他們不擁有的角色身上。",
+                    "choices": {
+                        "disabled": "關閉",
+                        "ally": "僅限盟友",
+                        "all": "所有角色"
+                    }
+                }
+            },
+            "droppeth": {
+                "title": "丟棄物品",
+                "enabled": {
+                    "name": "啟用",
+                    "hint": "允許使用者在畫布上按住 [Ctrl] 鍵拖放物品。"
+                },
+                "removeOnEmpty": {
+                    "name": "空時移除",
+                    "hint": "沒有剩餘物品時，是否移除指示物與角色。"
+                },
+                "light": {
+                    "name": "光源",
+                    "hint": "若丟棄的物品會發光，則僅在戰利品角色中存在物品時才會發光。"
+                },
+                "message": {
+                    "name": "發送訊息到聊天",
+                    "hint": "當物品從角色掉落時，將生成聊天訊息。"
+                }
+            },
+            "heroActions": {
+                "title": "英雄動作",
+                "enabled": {
+                    "name": "啟用",
+                    "hint": "是否在你的世界啟用英雄點卡牌動作。"
+                },
+                "table": {
+                    "name": "隨機表 UUID",
+                    "hint": "你想在世界中使用之骰表的唯一識別碼。若要取得骰表的 UUID（無論位於合集包或骰表目錄），請開啟骰表並左鍵點擊名稱旁的 📔。"
+                },
+                "trade": {
+                    "name": "允許交易",
+                    "hint": "啟用時，玩家角色間允許交換英雄點動作。"
+                },
+                "private": {
+                    "name": "私人抽取",
+                    "hint": "啟用後，生成的聊天訊息將對其他玩家保持私密。"
+                },
+                "count": {
+                    "name": "英雄動作上限設定",
+                    "hint": "若為0，則每個英雄點只能有一個英雄動作。否則，每次抽取的英雄動作數量將與英雄點的可用數量分離，角色必須從設定中重新抽取英雄動作。"
+                }
+            },
+            "noBulk": {
+                "title": "不計負載",
+                "dropped": {
+                    "name": "掉落物品不計負載",
+                    "hint": "角色物品欄中已丟棄的裝備不會計入負載值。"
+                },
+                "coins": {
+                    "name": "錢幣不計負載",
+                    "hint": "物品欄中的錢幣不會計入負載。"
+                }
+            },
+            "unided": {
+                "title": "設定未鑑定圖片",
+                "create": {
+                    "name": "在物品建立時",
+                    "hint": "建立或匯入物品時，自動將未鑑定圖片設為與一般圖片相同。"
+                },
+                "update": {
+                    "name": "在物品更新時",
+                    "hint": "更新物品的一般圖片時，自動更新未鑑定圖片。"
+                }
+            },
+            "untarget": {
+                "title": "取消目標",
+                "force": {
+                    "name": "強制取消目標",
+                    "hint": "將在回合/輪次變更時強制移除所有使用者的目標。"
+                },
+                "enabled": {
+                    "name": "已啟用",
+                    "hint": "回合或輪次變更時移除你的所有目標。此設定可由「強制取消目標」世界設定覆寫。"
+                }
+            },
+            "templateHelper": {
+                "title": "範本助手",
+                "enabled": {
+                    "name": "已啟用",
+                    "hint": "在畫布上放置範本時，會顯示對話框，讓你將範本內的所有指示物設為目標。"
+                },
+                "dismiss": {
+                    "name": "自動取消",
+                    "hint": "設定所有目標後（或取消時），範本會從畫布移除。「孤立」是指並非來自法術聊天訊息的範本。",
+                    "choices": {
+                        "disabled": "已停用",
+                        "orphan": "僅孤立",
+                        "all": "所有範本"
+                    }
+                }
+            },
+            "spellsSummary": {
+                "title": "法術摘要",
+                "enabled": {
+                    "name": "已啟用",
+                    "hint": "再次點擊角色卡的法術施展分頁圖示，即可隨時切換一般與替代版本。"
+                },
+                "sort": {
+                    "name": "按類別排序",
+                    "hint": "啟用後，相同等級表中的法術將先按類別排序，然後按字母順序排序。"
+                }
+            },
+            "stances": {
+                "title": "架式",
+                "enabled": {
+                    "name": "已啟用",
+                    "hint": "在角色卡中新增切換按鈕，方便更換架式；遭遇結束時也會自動移除架式。"
+                }
+            },
+            "share": {
+                "title": "共享資料",
+                "enabled": {
+                    "name": "已啟用",
+                    "hint": "角色之間將能夠連結/共享資料。"
+                }
+            },
+            "targetHelper": {
+                "title": "目標助手",
+                "enabled": {
+                    "name": "啟用",
+                    "hint": "在您的世界中啟用了「目標助手」功能。"
+                },
+                "addTargets": {
+                    "name": "將目標加入訊息",
+                    "hint": "在可施加傷害或進行豁免檢定的聊天訊息中加入額外目標。"
+                },
+                "smallButtons": {
+                    "name": "小按鈕",
+                    "hint": "縮小額外目標傷害按鈕的大小。"
+                }
+            },
+            "mergeDamage": {
+                "title": "合併傷害",
+                "enabled": {
+                    "name": "已啟用",
+                    "hint": "在傷害訊息中新增一個圖示，允許將其與其他傷害訊息合併。"
+                }
+            },
+            "hideDamage": {
+                "title": "隱藏傷害",
+                "enabled": {
+                    "name": "已啟用",
+                    "hint": "將會對玩家隱藏非玩家擁有生物的傷害聊天訊息數值。"
+                }
+            },
+            "useButton": {
+                "title": "使用按鈕",
+                "consumables": {
+                    "name": "加入至消耗品",
+                    "hint": "將為消耗品新增額外的「使用」按鈕。"
+                },
+                "selfApplied": {
+                    "name": "自動自我應用",
+                    "hint": "自我應用效果的使用按鈕將自動套用效果。"
+                }
+            },
+            "betterMerchant": {
+                "title": "更自定義的商人",
+                "enabled": {
+                    "name": "啟用",
+                    "hint": "為系統預設商人新增自定義功能。"
+                },
+                "servicesTop": {
+                    "name": "服務優先於物品",
+                    "hint": "服務是否應顯示在清單物品之上。"
+                },
+                "buyMax": {
+                    "name": "購買最大比例",
+                    "hint": "購買篩選器的最大比例值。"
+                },
+                "sellMax": {
+                    "name": "出售最大比例",
+                    "hint": "出售篩選器的最大比例值。"
+                },
+                "servicesMax": {
+                    "name": "服務最大比例",
+                    "hint": "服務的最大比例值。"
+                }
+            },
+            "underground": {
+                "title": "地下生物顯示",
+                "enabled": {
+                    "name": "啟用",
+                    "hint": "允許負高度的指示物在場景可見。"
+                },
+                "mode": {
+                    "name": "應用濾鏡",
+                    "hint": "要對高度低於 0 的指示物套用哪種濾鏡。",
+                    "choices": {
+                        "normal": "無濾鏡",
+                        "greyscale": "灰度濾鏡",
+                        "sepia": "褐色濾鏡"
+                    }
+                },
+                "contrast": {
+                    "name": "對比度",
+                    "hint": "指示物具備負高度時的對比度。"
+                },
+                "alpha": {
+                    "name": "不透明度",
+                    "hint": "指示物具備負高度時的不透明度。"
+                }
+            },
+            "identify": {
+                "title": "鑑定",
+                "enabled": {
+                    "name": "啟用",
+                    "hint": "該功能將幫助你管理世界中未被鑑定的物品，並跟蹤哪些物品已被鑑定。"
+                },
+                "stash": {
+                    "name": "加入隊伍藏物",
+                    "hint": "是否將隊伍藏物中的物品加入清單以進行鑑定。"
+                },
+                "delay": {
+                    "name": "24小時冷卻",
+                    "hint": "啟用時，角色鑑定物品失敗後必須等待 24 小時才能再次嘗試；否則會在下一天重置。"
+                },
+                "playerRequest": {
+                    "name": "允許玩家請求",
+                    "hint": "是否允許玩家發出鑑定物品的請求。"
+                },
+                "identifyPartials": {
+                    "name": "自動鑑定類似物品",
+                    "hint": "使用'自動鑑定已知物品'選項時，是否也應鑑定‘類似’物品。"
+                }
+            },
+            "conditionManager": {
+                "title": "狀態管理",
+                "enabled": {
+                    "name": "啟用",
+                    "hint": "拖拽狀態時按住已設定的繫結鍵，即可以開啟狀態管理欄設定其持續時間。"
+                }
+            },
+            "rollsTracker": {
+                "title": "擲骰追蹤器",
+                "enabled": {
+                    "name": "已啟用",
+                    "hint": "追蹤擲骰，以確認你是否真的那麼不走運。"
+                }
+            },
+            "teleport": {
+                "title": "傳送指示物",
+                "enabled": {
+                    "name": "已啟用",
+                    "hint": "按住指定快捷鍵並點擊畫布，會立即將選取的指示物傳送至該位置，不產生移動路徑。"
+                },
+                "select": {
+                    "name": "重新選取指示物",
+                    "hint": "傳送結束後是否重新選取指示物。"
+                }
+            }
+        },
+        "tool": {
+            "noGM": "您的世界沒有 GM 連線，無法處理此操作。"
+        },
+        "global": {
+            "withContent": {
+                "error": {
+                    "unknown": "嘗試傳送容器時發生錯誤。"
+                }
+            }
+        },
+        "arp": {
+            "forceVariant": "為了正常運作，<strong>PF2e Toolbelt</strong> 模組已停用 PF2e 系統的 ABP 變體規則。建議立即重新載入世界。"
+        },
+        "giveth": {
+            "error": {
+                "zero": "你無法給予自己都沒有的物品。",
+                "withQty": "給予 {qty} {item} 給 <strong>{target}</strong>。",
+                "withoutQty": "給予 {item} 給 <strong>{target}</strong>。",
+                "unknown": "嘗試給予所選物品時出了點問題。"
+            },
+            "dialog": {
+                "title": "給予物品",
+                "prompt": "你想給予多少個物品？"
+            },
+            "message": {
+                "subtitle": "給予物品",
+                "content": {
+                    "item": "{source} 給予 {quantity} × {item} 給 {target}。",
+                    "container": "{source} 給予 {item} 及其所有內容給 {target}。"
+                }
+            }
+        },
+        "droppeth": {
+            "dialog": {
+                "title": "丟下物品",
+                "prompt": "你希望丟棄多少數量的物品？"
+            },
+            "error": {
+                "out-of-bounds": "無法在此位置建立指示物。",
+                "unknown": "嘗試放置所選物品時出錯。",
+                "no-scene": "沒有可用的場景。"
+            },
+            "message": {
+                "subtitle": "丟棄物品",
+                "content": {
+                    "item": "{source} 丟棄了 {quantity} × {item} 在地上。",
+                    "container": "{source} 丟棄了 {item} 與其所有內容物。"
+                }
+            }
+        },
+        "heroActions": {
+            "trigger": "觸發",
+            "sheet": {
+                "action": {
+                    "use": "使用",
+                    "discard": "丟棄"
+                },
+                "label": "英雄動作",
+                "draw": "抽取 {nb}",
+                "redraw": "重抽",
+                "trade": "交換",
+                "give": "授予"
+            },
+            "trade": {
+                "title": "交換英雄動作",
+                "select": "選擇你要進行交換的玩家角色",
+                "yes": "傳送",
+                "no": "取消",
+                "request": {
+                    "title": "英雄動作 - 交換請求",
+                    "flavor": "玩家角色<strong>{sender}</strong>想要與<strong>{receiver}</strong>進行交換",
+                    "give": "給出：{give}",
+                    "want": "想要：{want}",
+                    "yes": "同意",
+                    "no": "拒絕"
+                },
+                "rejected": "<strong>{sender}</strong>與<strong>{receiver}</strong>之間的動作交換被拒絕了。"
+            },
+            "giveActions": {
+                "title": "授予英雄動作",
+                "yes": "授予動作",
+                "no": "取消",
+                "drawn": "已抽取",
+                "asDrawn": "授予時設定為抽取",
+                "withMessage": "生成聊天訊息"
+            },
+            "removeActions": {
+                "title": "移除英雄動作",
+                "all": "所有玩家角色",
+                "yes": "移除",
+                "no": "取消",
+                "removed": "英雄動作已從選定角色中被移除。"
+            },
+            "error": {
+                "onlyCharacter": "英雄動作僅相容玩家角色",
+                "notEnoughPoint": "該角色沒有足夠的英雄點",
+                "noDetails": "找不到這個英雄動作的詳細資訊。",
+                "noAction": "該角色不擁有任何英雄動作。",
+                "mustDiscard": "角色必須丟棄{nb}個動作才能進行交換。",
+                "noOther": "沒有其他擁有英雄動作的角色可以進行交換。",
+                "notGM": "你需要成為GM才能授予英雄動作。",
+                "tradeError": "在嘗試處理 <strong>{sender}</strong> 與 <strong>{receiver}</strong> 之間的交易時發生錯誤。"
+            },
+            "message": {
+                "drawn": "已抽取（{nb}）個英雄動作",
+                "given": "被授予（{nb}）個英雄動作",
+                "discarded": "已丟棄（{nb}）個英雄動作",
+                "used": {
+                    "heroPoints": "英雄點",
+                    "mythicPoints": "神話點",
+                    "message": "花費一點{type}使用"
+                },
+                "exchanged": "與{name}交換一個英雄動作",
+                "offer": "提供：{offer}",
+                "receive": "獲得：{receive}"
+            },
+            "table": {
+                "noDraw": "無法從表格中抽取任何行動。",
+                "notFound": "該遊戲世界無法找到英雄點卡牌表。",
+                "noFormula": "英雄牌組表沒有公式，請告訴你的GM他弄錯了。",
+                "noFormulaCompendium": "英雄點卡牌表沒有公式，並且是一個合集表。",
+                "drawError": "在抽取過程中發生錯誤，最可能是因為該表格包含不符合規範的結果。"
+            }
+        },
+        "templateHelper": {
+            "menu": {
+                "title": "範本助手",
+                "self": "包括自身",
+                "neutral": "包括中立",
+                "enemies": "敵人",
+                "allies": "盟友",
+                "all": "兩者",
+                "yes": "目標",
+                "no": "取消"
+            }
+        },
+        "spellsSummary": {
+            "label": "法術摘要"
+        },
+        "stances": {
+            "sheet": {
+                "noCombat": "你只能在遭遇中進入架式"
+            },
+            "error": {
+                "noCombat": "此角色不在任何遭遇中。"
+            },
+            "opening": {
+                "title": "開場架式",
+                "select": "選擇 {name} 的架式",
+                "yes": "架式就位！",
+                "no": "取消"
+            }
+        },
+        "share": {
+            "config": {
+                "header": "共用資料",
+                "master": {
+                    "label": "主體角色",
+                    "hint": "選擇要與此角色共享資料的主體角色。",
+                    "disabled": "此角色無法設定主體"
+                },
+                "health": {
+                    "label": "生命池",
+                    "hint": "與主體角色共享生命值與耐力值。"
+                },
+                "turn": {
+                    "label": "回合事件",
+                    "hint": "當主體角色的回合開始或結束、先攻值變化或進行夜間休息時，也會在此角色上觸發相同事件。"
+                },
+                "skills": {
+                    "label": "技能熟練",
+                    "hint": "使用主體角色的技能熟練度。"
+                },
+                "hero": {
+                    "label": "英雄點數",
+                    "hint": "使用主體角色的英雄點數。"
+                },
+                "weapon": {
+                    "label": "武器符文",
+                    "hint": "使用主體角色已投資之護手或武器的基礎符文與屬性符文。"
+                },
+                "armor": {
+                    "label": "護甲符文",
+                    "hint": "使用主體角色已投資之護甲或護腕的效力符文與強韌符文。"
+                }
+            },
+            "skills": {
+                "modifier": "主體角色熟練度"
+            }
+        },
+        "targetHelper": {
+            "unnamed": "未命名",
+            "tooltip": {
+                "adjustment": "調整值： {value}",
+                "dcWithValue": "DC {dc}",
+                "reroll": "允許重骰豁免檢定",
+                "result": {
+                    "format": "結果： {result}",
+                    "withOffset": "{offset}的{success}",
+                    "withoutOffset": "{success}"
+                }
+            },
+            "header": {
+                "select": "選擇目標<br>[雙擊] 開啟角色卡",
+                "hidden": "隱藏玩家",
+                "noSave": "該角色無法骰擲 {save} 檢定"
+            },
+            "rollSaves": "骰擲 NPC 豁免",
+            "setTargets": "設定目標",
+            "setSplashTargets": "設定範圍目標",
+            "toggleDamageRows": "切換原始傷害按鈕",
+            "reroll": {
+                "title": "重骰豁免檢定",
+                "noPoints": "你需要至少 1 點英雄點數才能重擲。",
+                "yes": "重骰",
+                "no": "取消",
+                "keeley": "低值重骰"
+            },
+            "drop": {
+                "unauth": "你只能夠對由你發出的訊息這樣做。",
+                "already": "該訊息已有與之連結的豁免檢定。",
+                "added": "你已成功在該訊息中新增一項豁免。"
+            },
+            "check-card": {
+                "check": "{type} 檢定",
+                "basicCheck": "基本 {type} 檢定"
+            }
+        },
+        "mergeDamage": {
+            "buttons": {
+                "split": "拆分回原始訊息",
+                "merge": "與先前的傷害訊息合併",
+                "inject": "將傷害注入先前的訊息"
+            },
+            "injected": "傷害已注入此訊息",
+            "noMatch": "找不到另一個匹配的傷害訊息。"
+        },
+        "betterMerchant": {
+            "sheet": {
+                "browser": "從合集包瀏覽匯入",
+                "filters": "物品篩選",
+                "infiniteAll": {
+                    "label": "無限庫存",
+                    "tooltip": "商人永遠不會賣完物品（對寶藏無效）"
+                },
+                "servicesRatio": {
+                    "label": "服務比例",
+                    "tooltip": "此商人所有服務的價格比例"
+                }
+            },
+            "browserPull": {
+                "title": "新增物品 - {name}",
+                "selected": "選擇",
+                "add": "新增至商人卡",
+                "all": "全選/全否",
+                "limit": "你已經到達上限了！",
+                "wait": "請等待物品處理完畢。",
+                "finished": "已將物品新增到商人角色中。",
+                "owned": "該物品已在商人的物品欄中",
+                "confirm": "<p>確定要將物品（已選擇：<strong>{nb}</strong>）加入商人嗎？</p><p>依物品數量而定，此過程可能需要數秒鐘。</p>"
+            },
+            "browserFilter": {
+                "create": "建立 {type} 過濾器",
+                "edit": "編輯 {type} 過濾器",
+                "empty": "沒有篩選條件時，不需要建立過濾器。"
+            },
+            "filter": {
+                "buy": "購買",
+                "sell": "販售"
+            },
+            "filters": {
+                "title": "物品過濾器 - {name}",
+                "default": {
+                    "buy": "預設購買",
+                    "sell": "預設販售"
+                },
+                "name": "名稱",
+                "type": "類型",
+                "buy": "購買過濾器",
+                "sell": "販售過濾器",
+                "enabled": {
+                    "label": "啟用",
+                    "tooltip": "啟用此商人的過濾器"
+                },
+                "useDefault": {
+                    "label": "使用預設錢包",
+                    "tooltip": "這個過濾器是否也應使用預設錢包，如果不，將只使用此過濾器的錢包"
+                },
+                "ratio": {
+                    "label": "價格比例",
+                    "tooltip": "此過濾器的價格比例",
+                    "treasure": "到達此過濾器的寶物將始終以其價格的100%購買"
+                },
+                "purse": {
+                    "label": "金錢錢包",
+                    "tooltip": {
+                        "buy": "此過濾器花費的金額（0 = 無更多資金購買，留空 = 無限）<br><em>注意：不會顯示小於金的數額，但仍會追蹤</em>",
+                        "sell": "截至目前此過濾器通過出售物品獲得的金額"
+                    }
+                },
+                "delete": {
+                    "title": "刪除過濾器",
+                    "content": "您確定要刪除 <strong>{name}</strong> 過濾器嗎？"
+                }
+            },
+            "service": {
+                "title": "服務 - {name}",
+                "quantity": "負數代表無限庫存",
+                "name": "名稱",
+                "enabled": "已啟用",
+                "macro": {
+                    "label": "執行於服務上的巨集",
+                    "drop": "放下巨集"
+                },
+                "none": "找不到服務",
+                "delete": {
+                    "title": "刪除服務",
+                    "msg": "您確定要刪除此服務嗎？"
+                },
+                "give": "<strong>{seller}</strong>免費向<strong>{buyer}</strong>提供服務。",
+                "buy": "<strong>{buyer}</strong>僱傭了<strong>{seller}</strong>的服務。",
+                "noBuyer": "你必須選擇一個你擁有的玩家角色/NPC/隊伍作為服務物件。",
+                "noFunds": "<strong>{buyer}</strong>沒有足夠資金僱傭<strong>{seller}</strong>的服務。",
+                "noStock": "<strong>{seller}</strong>不再提供該服務。",
+                "error": "嘗試處理服務請求時發生錯誤",
+                "export": "匯出服務"
+            },
+            "service-export": {
+                "title": "匯出服務 - {name}",
+                "copied": "服務 <strong>{name}</strong> 已複製到剪貼簿。",
+                "copiedAll": "<strong>{name}</strong> 服務已複製到剪貼簿。",
+                "all": "複製所有服務",
+                "close": "關閉"
+            },
+            "service-import": {
+                "title": "匯入服務 - {name}",
+                "yes": "匯入",
+                "no": "取消",
+                "error": "嘗試匯入服務時發生錯誤。"
+            },
+            "sheet-services": {
+                "label": "服務",
+                "add": "新增服務",
+                "edit": "編輯服務",
+                "delete": "刪除服務",
+                "enabled": "切換服務",
+                "give": "免費服務",
+                "buy": "請求服務",
+                "export": "匯出服務",
+                "import": "匯入服務"
+            },
+            "sell": {
+                "refuse": "<strong>{actor}</strong> 不願出售 <strong>{item}</strong>。"
+            },
+            "buy": {
+                "refuse": "<strong>{actor}</strong> 對購買 {quantity} <strong>{item}</strong> 沒有興趣。",
+                "error": "在處理來自 <strong>{user}</strong> 的交易請求時發生錯誤。",
+                "question": "你希望出售多少物品？"
+            }
+        },
+        "actionable": {
+            "itemSheet": {
+                "label": "巨集",
+                "hint": "或在使用此動作時執行的巨集"
+            },
+            "macro-zone": {
+                "label": "巨集",
+                "drop": "丟棄巨集",
+                "hint": "當這個 {type} 被使用時將執行的巨集"
+            },
+            "cancelSpell": "<strong>{name}</strong> 施放被其巨集取消。"
+        },
+        "identify": {
+            "tracker": {
+                "title": "物品鑑定追蹤",
+                "identified": "已鑑定",
+                "send-to-chat": "傳送至聊天",
+                "request-checks": "請求檢定",
+                "misidentify": "切換誤認狀態",
+                "failed": {
+                    "daily": "今日未能鑑定出該物品",
+                    "delay": "未能鑑定出該物品：<br>還剩{hours}小時冷卻完畢"
+                },
+                "known": {
+                    "full": "已鑑定該物品",
+                    "partial": "已鑑定相似物品：<br>{item}",
+                    "recall": "可花費一次回憶知識動作<br>並自動成功"
+                },
+                "auto": {
+                    "label": "自動鑑定",
+                    "tooltip": "自動鑑定已知物品",
+                    "title": "自動鑑定",
+                    "content": "鑑定隊伍成員已知的物品：<br><ul>{items}</ul>",
+                    "none": "這裡沒有能自動鑑定的物品"
+                },
+                "save": {
+                    "label": "更新結果",
+                    "tooltip": "更新當前修改並鑑定物品",
+                    "title": "更新修改",
+                    "content": "儲存當前修改並自動鑑定以下物品：<br><ul>{items}</ul>"
+                },
+                "reset": {
+                    "label": "重置修改",
+                    "tooltip": "恢復當前修改"
+                },
+                "clock": {
+                    "forward": "將時間往前進10分鐘",
+                    "backward": "將時間往後撥10分鐘",
+                    "open": "開啟世界時鐘選單"
+                }
+            },
+            "request": {
+                "sent": "物品鑑定請求已經發送給GM。",
+                "request": "請求對",
+                "proceed": "你要繼續鑑定嗎？"
+            }
+        },
+        "hideDamage": {
+            "reveal": "向玩家揭示傷害"
+        },
+        "conditionManager": {
+            "manager": {
+                "title": "狀態管理器 - {name}",
+                "add": "建立",
+                "cancel": "取消",
+                "origin": "來源",
+                "label": "標籤",
+                "anonymous": "匿名化"
+            }
+        },
+        "rollsTracker": {
+            "tracker": {
+                "title": "擲骰追蹤器",
+                "left": "擲骰次數",
+                "bottom": "擲骰結果",
+                "mode": {
+                    "all": {
+                        "label": "所有檢定"
+                    },
+                    "attack-roll": {
+                        "label": "攻擊擲骰"
+                    },
+                    "attack-roll-outcome": {
+                        "label": "攻擊結果",
+                        "bottom": "擲骰結果"
+                    },
+                    "saving-throw": {
+                        "label": "豁免檢定"
+                    },
+                    "saving-throw-outcome": {
+                        "label": "豁免結果",
+                        "bottom": "強韌|反射|意志"
+                    },
+                    "flat-check": {
+                        "label": "純值檢定"
+                    },
+                    "skill-check": {
+                        "label": "技能檢定"
+                    },
+                    "skill-check-1": {
+                        "label": "技能（前半部分）",
+                        "bottom": "技能檢定"
+                    },
+                    "skill-check-2": {
+                        "label": "技能（後半部分）",
+                        "bottom": "技能檢定"
+                    },
+                    "perception-check": {
+                        "label": "察覺檢定"
+                    },
+                    "initiative": {
+                        "label": "先攻檢定"
+                    }
+                },
+                "filter": {
+                    "all": "全部時間",
+                    "time": "時間範圍",
+                    "session": "遊戲時段",
+                    "encounter": "遭遇"
+                },
+                "options": {
+                    "from": "從",
+                    "to": "至"
+                },
+                "controls": {
+                    "play": "繼續記錄",
+                    "pause": "暫停記錄",
+                    "start": "開始遊戲時段",
+                    "end": "結束遊戲時段",
+                    "delete": "清除記錄",
+                    "session": "玩家在遊戲時段結束前不會看到任何新結果"
+                },
+                "info": {
+                    "paused": {
+                        "label": "記錄已暫停",
+                        "tooltip": "目前不會記錄世界中的擲骰"
+                    },
+                    "session": {
+                        "label": "目前正在進行遊戲時段",
+                        "tooltip": "目前的遊戲時段結束前不會顯示新結果"
+                    }
+                },
+                "stats": {
+                    "total": "擲骰次數",
+                    "mean": "平均數",
+                    "median": "中位數",
+                    "mode": "眾數"
+                }
+            },
+            "clear": {
+                "title": "清除記錄",
+                "hint": "你想清除到此日期的任何記錄嗎？",
+                "yes": "清除",
+                "no": "取消"
+            },
+            "confirm": {
+                "start": "新遊戲時段 <strong>{time}</strong> 已開始。",
+                "end": "遊戲時段 <strong>{time}</strong> 已結束。",
+                "pause": "擲骰記錄已暫停。",
+                "play": "擲骰記錄已恢復。",
+                "delete": {
+                    "all": "記錄已清除。",
+                    "before": "<strong>{time}</strong> 之前的記錄已被清除。"
+                }
+            }
+        }
+    }
+}
